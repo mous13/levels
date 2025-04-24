@@ -1,0 +1,19 @@
+{
+  "name": "citadel/levels",
+  "type": "forumify-plugin",
+  "description": "Levelling Plugin",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "version": "dev-main",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Citadel\\Levels\\": "src/"
+    }
+  },
+  "extra": {
+    "forumify-plugin-class": "Citadel\\Levels\\CitadelLevels"
+  }
+
+}
