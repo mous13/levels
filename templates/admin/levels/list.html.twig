@@ -22,6 +22,7 @@
         <thead>
         <tr>
             <th>Level</th>
+            <th>Experience Threshold</th>
             <th>Buttons</th>
         </tr>
         </thead>
@@ -36,7 +37,8 @@
                 data-action="click->toggle#toggle"
                 data-parent-name="{{ level.name }}"
             >
-                <td class="w-80">{{ level.name }}</td>
+                <td class="w-42">{{ level.name }}</td>
+                <td class="w-42">{{ level.xpthreshold }}</td>
                 <td class="w-15">
                     <a href="{{ path('vanguard_admin_ranks_rank', {'parent_id': level.id}) }}" class="btn btn-link btn-small btn-icon">
                         <i class="ph ph-plus-circle"></i>
@@ -47,7 +49,6 @@
                     <a href="{{ path('vanguard_admin_ranks_category', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
                         <i class="ph ph-gear"></i>
                     </a>
-
                     <a href="#" class="btn btn-link btn-small btn-icon"
                        data-sortable-parent-target="handle"
                        data-action="mousedown@window->stop">
