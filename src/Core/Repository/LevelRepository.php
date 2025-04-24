@@ -23,4 +23,12 @@ class LevelRepository extends AbstractRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('l')
+            ->orderBy('l.xpThreshold', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
