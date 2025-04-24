@@ -12,4 +12,15 @@ class LevelRepository extends AbstractRepository
     {
         return Level::class;
     }
+
+    public function findByXp(int $xp): ?Level
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.xpThreshold <= :xp')
+            ->setParameter('xp', $xp)
+            ->orderBy('l.xpThreshold', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

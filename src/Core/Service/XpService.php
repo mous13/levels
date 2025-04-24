@@ -21,6 +21,7 @@ class XpService
             $userXp = new UserXp();
             $userXp->setUser($user);
         }
+
         $userXp->setXp($userXp->getXp() + $amount);
         $this->repository->save($userXp);
     }
