@@ -40,13 +40,10 @@
                 <td class="w-42">{{ level.name }}</td>
                 <td class="w-42">{{ level.xpthreshold }}</td>
                 <td class="w-15">
-                    <a href="{{ path('vanguard_admin_ranks_rank', {'parent_id': level.id}) }}" class="btn btn-link btn-small btn-icon">
-                        <i class="ph ph-plus-circle"></i>
-                    </a>
-                    <a href="{{ path('vanguard_admin_ranks_category_delete', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
+                    <a href="{{ path('levels_admin_levels_delete', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
                         <i class="ph ph-minus-circle"></i>
                     </a>
-                    <a href="{{ path('vanguard_admin_ranks_category', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
+                    <a href="{{ path('levels_admin_levels_edit', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
                         <i class="ph ph-gear"></i>
                     </a>
                     <a href="#" class="btn btn-link btn-small btn-icon"

@@ -1,0 +1,3 @@
+levels:
+  admin:
+    delete: 'Warning: You are about to delete {level}'

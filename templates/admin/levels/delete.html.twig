@@ -1,0 +1,8 @@
+{% extends '@Forumify/admin/base.html.twig' %}
+{% block body %}
+        {% include '@Forumify/admin/components/confirm.html.twig' with {
+            warningText: 'levels.admin.delete'|trans({ level: level.name}),
+            confirmPath: path('levels_admin_levels_delete', { id: level.id, confirmed: 1 }),
+            cancelPath: path('levels_admin_levels_list')
+        } only %}
+{% endblock %}

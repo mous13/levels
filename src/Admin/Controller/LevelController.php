@@ -42,6 +42,9 @@ class LevelController extends AbstractController
 
     public function handleLevelForm(Request $request, ?int $id = null, ?Level $level = null): Response
     {
+        if($id != null) {
+            $level = $this->levelRepository->find($id);
+        }
 
         $form = $this->createForm(LevelType::class, $level);
         $form->handleRequest($request);
@@ -58,5 +61,21 @@ class LevelController extends AbstractController
             'form' => $form->createView(),
             'level' => $level
         ]);
+    }
+
+    #[Route('/{id}/delete', '_delete')]
+    public function delete(int $id, Request $request): Response
+    {
+        $level = $this->levelRepository->find($id);
+        if (!$request->get('confirmed')) {
+            return  $this->render('@CitadelLevels/admin/levels/delete.html.twig', [
+                'level' => $level,
+            ]);
+        }
+
+        $this->levelRepository->remove($level);
+        $this->addFlash('success', 'Level removed.');
+        return $this->redirectToRoute('levels_admin_levels_list');
+
     }
 }
