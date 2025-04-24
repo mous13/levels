@@ -1,0 +1,3 @@
+doctrine_migrations:
+    migrations_paths:
+        'LevelsDoctrineMigrations': '%kernel.project_dir%/vendor/citadel/levels/migrations'

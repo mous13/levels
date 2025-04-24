@@ -1,0 +1,9 @@
+doctrine:
+    orm:
+        mappings:
+            levels:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/vendor/citadel/levels/src/Core/Entity'
+                prefix: Citadel\Levels\Core\Entity
+                alias: LevelsEntity
