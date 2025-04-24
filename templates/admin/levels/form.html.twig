@@ -1,15 +1,53 @@
 {% extends '@Forumify/admin/base.html.twig' %}
 {% block title_page %}
-    {% if level is not null %}
-        Level {{ level.name }}
-    {% else %}
-        New Level
-    {% endif %}
+    Levels Settings
 {% endblock %}
 {% block body %}
-    {% include '@Forumify/admin/components/simple_form.html.twig' with {
-        name: level is not null ? level.name : 'New Level'|trans,
-        form: form,
-        cancelPath: path('levels_admin_levels_list')
-    } only %}
+    <h1 class="mb-4">Levels Settings</h1>
+    {{ form_start(form) }}
+    <div class="box">
+        {% embed '@Forumify/components/tabs.html.twig' %}
+            {% block tabs %}
+                <button type="button" class="btn-link" data-tab-id="settings">{{ 'vanguard.activity.admin.settings.form.tabs.settings'|trans }}</button>
+                <button type="button" class="btn-link" data-tab-id="enlistment">{{ 'vanguard.activity.admin.settings.form.tabs.tasks'|trans }}</button>
+            {% endblock %}
+            {% block tabpanels %}
+                <div id="settings">
+                    <div class="card-title">{{ 'vanguard.activity.admin.settings.form.tabs.headers.frequency'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_row(form.vanguard__activity_reportin_enable) }}
+                        {{ form_row(form.vanguard__activity_reportin_frequency) }}
+                    </div>
+
+                    <div class="card-title">{{ 'vanguard.activity.admin.settings.form.tabs.headers.status'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_row(form.vanguard__activity_status_enable) }}
+                        {{ form_row(form.vanguard__activity_status_status) }}
+                    </div>
+                </div>
+
+                <div id="enlistment">
+                    <div class="card-title">{{ 'vanguard.activity.admin.settings.form.tabs.headers.task_settings'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_row(form.vanguard__activity_steps_enable) }}
+                    </div>
+                    <div class="card-title">{{ 'vanguard.activity.admin.settings.form.tabs.headers.task_steps'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_row(form.vanguard__activity_steps_frequency) }}
+                        {{ form_row(form.vanguard__activity_steps_status) }}
+                        {{ form_row(form.vanguard__activity_steps_unit) }}
+                    </div>
+                    <div class="card-title">{{ 'vanguard.activity.admin.settings.form.tabs.headers.task_conditions'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_row(form.vanguard__activity_ignore_status) }}
+                        {{ form_row(form.vanguard__activity_ignore_units) }}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endembed %}
+        <div class="flex justify-center items-center gap-2">
+            <button type="submit" class="btn-primary">{{ 'vanguard.activity.admin.settings.form.buttons.save'|trans }}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

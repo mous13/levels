@@ -1,0 +1,16 @@
+{% extends '@Forumify/admin/base.html.twig' %}
+{% block title_page %}
+    Levels Settings
+{% endblock %}
+{% block body %}
+    <h1 class="mb-4">Levels Settings</h1>
+    {{ form_start(form) }}
+    <div class="box">
+        {{ form_row(form.levels__thread_post_xp) }}
+        {{ form_row(form.levels__comment_post_xp) }}
+        <div class="flex justify-center items-center gap-2">
+            <button type="submit" class="btn-primary">Save</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

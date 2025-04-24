@@ -3,8 +3,10 @@
 namespace Citadel\Levels\Admin\Controller;
 
 use Citadel\Levels\Admin\Form\LevelType;
+use Citadel\Levels\Admin\Form\SettingsType;
 use Citadel\Levels\Core\Entity\Level;
 use Citadel\Levels\Core\Repository\LevelRepository;
+use Forumify\Core\Repository\SettingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +20,7 @@ class LevelController extends AbstractController
 
     public function __construct(
        private readonly LevelRepository $levelRepository,
+       private readonly SettingRepository $settingRepository,
     ){}
 
     #[Route('', '_list')]
@@ -76,6 +79,25 @@ class LevelController extends AbstractController
         $this->levelRepository->remove($level);
         $this->addFlash('success', 'Level removed.');
         return $this->redirectToRoute('levels_admin_levels_list');
+    }
 
+    #[Route('/settings', '_settings')]
+    public function settings(Request $request): Response
+    {
+        $form = $this->createForm(SettingsType::class, $this->settingRepository->toFormData('levels'));
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $this->settingRepository->handleFormData($data);
+
+            $this->addFlash('success', 'Settings saved.');
+            return $this->redirectToRoute('levels_admin_levels_settings');
+        }
+
+        return $this->render('@CitadelLevels/admin/levels/settings.html.twig', [
+           'form' => $form->createView(),
+        ]);
     }
 }
