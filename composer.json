@@ -5,6 +5,7 @@
   "minimum-stability": "stable",
   "license": "proprietary",
   "require": {
+    "forumify/forumify-platform": "^0.4.18"
   },
   "autoload": {
     "psr-4": {
