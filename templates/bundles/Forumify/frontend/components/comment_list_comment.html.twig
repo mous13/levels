@@ -1,0 +1,38 @@
+{% extends '@!Forumify/frontend/components/comment_list_comment.html.twig' %}
+{% block comment_author %}
+    <div class="comment-author">
+        {% include '@Forumify/components/avatar.html.twig' with { user: item.createdBy } only %}
+        {% include '@Forumify/components/username.html.twig' with { user: item.createdBy, className: 'text-center' } only %}
+        {% if item.createdBy %}
+            {% if not setting('forumify.hide_usernames') %}
+                <span class="text-small">@{{ item.createdBy.username }}</span>
+                <p class="mb-2 text-small">
+                    <span class="text-bold">Level:</span>
+                    {% set lvl = level(item.createdBy) %}
+                    {% if lvl %}
+                        {{ lvl.name }} ({{ xp(item.createdBy) }} XP)
+                    {% else %}
+                        {{ xp(item.createdBy) }} XP earned so far
+                    {% endif %}
+                </p>
+            {% endif %}
+            {% set roles = item.createdBy.roleEntities|filter(r => r.showOnForum) %}
+            {% if roles is not empty %}
+                <ul class="flex flex-col mt-4 text-small text-center hide-phone">
+                    {% for role in roles %}
+                        <li {% if role.color is not null and role.color != '#000000' %}style="color: {{ role.color }};"{% endif %}>
+                            {{ role.title }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="flex flex-wrap justify-center gap-2 mt-4 hide-phone">
+                {% for badge in item.createdBy.badges|filter(b => b.showOnForum) %}
+                    <div class="avatar-sm flex justify-center items-center">
+                        <img width="100%" height="auto" src="{{ asset(badge.image, 'forumify.asset') }}" title="{{ badge.name }}">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
