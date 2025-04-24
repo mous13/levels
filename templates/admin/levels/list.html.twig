@@ -1,0 +1,61 @@
+{% extends '@Forumify/admin/base.html.twig' %}
+{% block title_page %}
+    Levels
+{% endblock %}
+{% block body %}
+
+    <div class="mb-5">
+        <h2>Levels</h2>
+        <p></p>
+        <div class="flex justify-end">
+            <a class="btn-primary btn-small btn-icon" href="{{ path('levels_admin_levels_new') }}">
+                <p>New Level</p>
+                <i class="ph ph-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <table class="fold-table"
+           data-controller="toggle sortable-parent"
+           data-sortable-parent-url-value="{{ path('vanguard_admin_ranks_categories_reorder') }}"
+    >
+        <thead>
+        <tr>
+            <th>Level</th>
+            <th>Buttons</th>
+        </tr>
+        </thead>
+
+        {% for level in levels %}
+            <tbody class="category-block"
+                   data-category-id="{{ level.id }}"
+                   data-sortable-parent-target="block"
+            >
+
+            <tr class="view parent-row category"
+                data-action="click->toggle#toggle"
+                data-parent-name="{{ level.name }}"
+            >
+                <td class="w-80">{{ level.name }}</td>
+                <td class="w-15">
+                    <a href="{{ path('vanguard_admin_ranks_rank', {'parent_id': level.id}) }}" class="btn btn-link btn-small btn-icon">
+                        <i class="ph ph-plus-circle"></i>
+                    </a>
+                    <a href="{{ path('vanguard_admin_ranks_category_delete', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
+                        <i class="ph ph-minus-circle"></i>
+                    </a>
+                    <a href="{{ path('vanguard_admin_ranks_category', {'id': level.id}) }}" class="btn btn-link btn-small btn-icon">
+                        <i class="ph ph-gear"></i>
+                    </a>
+
+                    <a href="#" class="btn btn-link btn-small btn-icon"
+                       data-sortable-parent-target="handle"
+                       data-action="mousedown@window->stop">
+                        <i class="ph ph-arrows-in-line-vertical"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

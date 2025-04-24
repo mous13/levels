@@ -1,0 +1,15 @@
+{% extends '@Forumify/admin/base.html.twig' %}
+{% block title_page %}
+    {% if level is not null %}
+        Level {{ level.name }}
+    {% else %}
+        New Level
+    {% endif %}
+{% endblock %}
+{% block body %}
+    {% include '@Forumify/admin/components/simple_form.html.twig' with {
+        name: level is not null ? level.name : 'New Level'|trans,
+        form: form,
+        cancelPath: path('levels_admin_levels_list')
+    } only %}
+{% endblock %}
