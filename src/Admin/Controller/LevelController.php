@@ -7,6 +7,7 @@ use Citadel\Levels\Admin\Form\SettingsType;
 use Citadel\Levels\Core\Entity\Level;
 use Citadel\Levels\Core\Repository\LevelRepository;
 use Forumify\Core\Repository\SettingRepository;
+use Forumify\Plugin\Attribute\PluginVersion;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/levels', 'levels')]
 #[IsGranted('levels.admin.levels.view')]
+#[PluginVersion('citadel/levels', 'premium')]
 class LevelController extends AbstractController
 {
 

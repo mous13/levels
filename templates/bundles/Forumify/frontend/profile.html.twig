@@ -11,15 +11,17 @@
             <div class="flex gap-2 mb-2">
                 <div>
                     <h2 class="mb-0">{{ user.displayName }}</h2>
-                    <p class="mb-2 text-small">
-                        <span class="text-bold">Level:</span>
-                        {% set lvl = level(user) %}
-                        {% if lvl %}
-                            {{ lvl.name }} ({{ xp(user) }} XP)
-                        {% else %}
-                            {{ xp(user) }} XP earned so far
-                        {% endif %}
-                    </p>
+                    {%  if plugin_version('citadel/levels', 'premium') %}
+                        <p class="mb-2 text-small">
+                            <span class="text-bold">Level:</span>
+                            {% set lvl = level(user) %}
+                            {% if lvl %}
+                                {{ lvl.name }} ({{ xp(user) }} XP)
+                            {% else %}
+                                {{ xp(user) }} XP earned so far
+                            {% endif %}
+                        </p>
+                    {% endif %}
                     {% if not setting('forumify.hide_usernames') %}
                         <p class="text-small">@{{ user.username }}</p>
                     {% endif %}

@@ -6,15 +6,21 @@
         {% if item.createdBy %}
             {% if not setting('forumify.hide_usernames') %}
                 <span class="text-small">@{{ item.createdBy.username }}</span>
-                <p class="mb-2 text-small">
-                    <span class="text-bold">Level:</span>
-                    {% set lvl = level(item.createdBy) %}
-                    {% if lvl %}
-                        {{ lvl.name }} ({{ xp(item.createdBy) }} XP)
-                    {% else %}
-                        {{ xp(item.createdBy) }} XP earned so far
-                    {% endif %}
-                </p>
+                {%  if plugin_version('citadel/levels', 'premium') %}
+                    {% if levelConfig() == false %}
+a
+                        {% else %}
+                            <p class="mb-2 text-small">
+                                <span class="text-bold">Level:</span>
+                                {% set lvl = level(item.createdBy) %}
+                                {% if lvl %}
+                                    {{ lvl.name }} ({{ xp(item.createdBy) }} XP)
+                                {% else %}
+                                    {{ xp(item.createdBy) }} XP earned so far
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                {% endif %}
             {% endif %}
             {% set roles = item.createdBy.roleEntities|filter(r => r.showOnForum) %}
             {% if roles is not empty %}
