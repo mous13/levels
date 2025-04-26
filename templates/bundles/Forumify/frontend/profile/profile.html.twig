@@ -1,0 +1,5 @@
+{% extends '@!Forumify/frontend/profile.html.twig' %}
+{% block profile_user_roles %}
+    {% include '@CitadelLevels/frontend/components/user_level.html.twig' with { user: user } only %}
+    {{ parent() }}
+{% endblock %}

@@ -1,3 +1,6 @@
 levels:
+  level: Level
+  user_level: '{level} ({xp} XP)'
+  user_no_level: '{xp} XP earned so far'
   admin:
     delete: 'Warning: You are about to delete {level}'
