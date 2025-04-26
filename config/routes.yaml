@@ -3,9 +3,3 @@ admin:
   type: attribute
   name_prefix: levels_admin_
   prefix: admin/levels/
-
-front:
-  resource: ../src/Core/Controller
-  type: attribute
-  prefix: levels/
-  name_prefix: levels_
