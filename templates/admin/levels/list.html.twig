@@ -16,8 +16,6 @@
     </div>
 
     <table class="fold-table"
-           data-controller="toggle sortable-parent"
-           data-sortable-parent-url-value="{{ path('vanguard_admin_ranks_categories_reorder') }}"
     >
         <thead>
         <tr>
@@ -29,13 +27,9 @@
 
         {% for level in levels %}
             <tbody class="category-block"
-                   data-category-id="{{ level.id }}"
-                   data-sortable-parent-target="block"
             >
 
             <tr class="view parent-row category"
-                data-action="click->toggle#toggle"
-                data-parent-name="{{ level.name }}"
             >
                 <td class="w-42">{{ level.name }}</td>
                 <td class="w-42">{{ level.xpthreshold }}</td>
