@@ -1,0 +1,11 @@
+{%  if plugin_version('citadel/levels', 'premium') and levelConfig() %}
+    <p class="mb-2 text-small">
+        <span class="text-bold">{{ 'levels.level'|trans }}:</span>
+        {% set lvl = level(user) %}
+        {% if lvl %}
+            {{ 'levels.user_level'|trans({ level: lvl.name, xp: xp(user) }) }}
+        {% else %}
+            {{ 'levels.user_no_level'|trans({ xp: xp(user) }) }}
+        {% endif %}
+    </p>
+{% endif %}
