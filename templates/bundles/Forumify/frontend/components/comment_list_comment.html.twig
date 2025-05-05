@@ -1,7 +1,7 @@
 {% extends '@!Forumify/frontend/components/comment_list_comment.html.twig' %}
 {% block comment_list_comment_author_badges %}
     {{ parent() }}
-    <div class="mt-2 w-50">
+    <div class="mt-2 w-70 hide-phone">
         {% if setting('levels.display_banner') == "banner" %}
             {% include '@CitadelLevels/frontend/components/banner.html.twig' with { user: item.createdBy } only %}
         {% else %}
