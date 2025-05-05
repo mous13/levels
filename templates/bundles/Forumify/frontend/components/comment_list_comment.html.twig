@@ -1,5 +1,5 @@
 {% extends '@!Forumify/frontend/components/comment_list_comment.html.twig' %}
-{% block comment_list_comment_author_roles %}
-    {% include '@CitadelLevels/frontend/components/user_level.html.twig' with { user: item.createdBy } only %}
+{% block comment_list_comment_author_badges %}
     {{ parent() }}
+    {% include '@CitadelLevels/frontend/components/comment_user_level.html.twig' with { user: item.createdBy } only %}
 {% endblock %}

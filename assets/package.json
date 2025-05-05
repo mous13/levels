@@ -1,0 +1,24 @@
+{
+  "name": "@citadel/levels",
+  "description": "frontend assets for Levels",
+  "version": "0.1.0",
+  "symfony": {
+    "controllers": {
+      "levels": {
+        "main": "dist/levels_controller.js",
+        "fetch": "eager",
+        "enabled": true,
+        "autoimport": {}
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0"
+    }
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "core-js": "^3.34.0"
+  }
+}

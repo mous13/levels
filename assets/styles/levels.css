@@ -1,0 +1,23 @@
+.xp-bar {
+    background: #e5e7eb;
+    border-radius: 0px;
+    overflow: hidden;
+    height: 1rem;
+    transform: skew(30deg);
+}
+.xp-bar_fill {
+    background: #59E390;
+    height: 100%;
+    line-height: 1rem;
+    color: #191919;
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: nowrap;
+}
+.no-skewed {
+    display:inline-block;
+    transform: skewX(-30deg);
+}
+.metric {
+    color:#59E390;
+}

@@ -24,6 +24,7 @@ class LevelExtension extends AbstractExtension
             new TwigFunction('levelConfig', [$this, 'getLevelConfig']),
             new TwigFunction('level', [$this, 'getUserLevel']),
             new TwigFunction('xp', [$this, 'getUserXp']),
+            new TwigFunction('levelProgress', [$this, 'getLevelProgress']),
         ];
     }
     public function getLevelConfig(): bool
@@ -42,5 +43,22 @@ class LevelExtension extends AbstractExtension
     {
         $userXp = $this->userXpRepository->findOneBy(['user' => $user]);
         return $userXp?->getXp() ?? 0;
+    }
+    public function getLevelProgress(User $user): array
+    {
+        $currentXp    = $this->getUserXp($user);
+        $currentLevel = $this->getUserLevel($user);
+        $minXp        = $currentLevel?->getXpThreshold() ?? 0;
+        $nextLevel    = $this->levels->findNextForXp($currentXp);
+        $maxXp        = $nextLevel?->getXpThreshold() ?? $minXp;
+        $delta        = max(1, $maxXp - $minXp);
+
+        return [
+            'current'   => $currentXp,
+            'min'       => $minXp,
+            'max'       => $maxXp,
+            'percent'   => (($currentXp - $minXp) / $delta) * 100,
+            'nextLevel' => $nextLevel,
+        ];
     }
 }

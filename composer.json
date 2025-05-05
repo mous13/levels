@@ -1,6 +1,7 @@
 {
   "name": "citadel/levels",
   "type": "forumify-plugin",
+  "keywords": ["symfony-ux"],
   "description": "Levelling Plugin",
   "minimum-stability": "stable",
   "license": "proprietary",

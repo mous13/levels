@@ -27,13 +27,13 @@ class ForumifyXpSubscriber implements EventSubscriberInterface
     public function onTopicCreated(TopicCreatedEvent $event): void
     {
         $topic = $event->getTopic();
-        $this->xpService->addXp($topic->getCreatedBy(), $this->settingRepository->get('levels.thread_post_xp'));
+        $this->xpService->addXp($topic->getCreatedBy(), (int)$this->settingRepository->get('levels.thread_post_xp'));
     }
 
     public function onCommentCreated(CommentCreatedEvent $event): void
     {
         $comment = $event->getComment();
-        $this->xpService->addXp($comment->getCreatedBy(), $this->settingRepository->get('levels.comment_post_xp'));
+        $this->xpService->addXp($comment->getCreatedBy(), (int)$this->settingRepository->get('levels.comment_post_xp'));
     }
 
 }

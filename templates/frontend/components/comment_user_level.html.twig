@@ -1,0 +1,18 @@
+{% if plugin_version('citadel/levels', 'premium') and levelConfig() %}
+    <div class="mt-2 mb-2 w-50">
+        {% set prog = levelProgress(user) %}
+        {% set lvl = level(user) %}
+        {% if levelConfig() != null %}
+            <div title="{{ prog.percent|round(0) }}%">
+                <p class="text-small">
+                    <span class="">{{ lvl.name }}</span>
+                </p>
+                <div class="xp-bar w-100">
+                    <div class="xp-bar_fill"  style="width: {{ prog.percent|round(0) }}%;" aria-valuenow="{{ prog.current }}" aria-valuemin="{{ prog.min }}" aria-valuemax="{{ prog.max }}">
+                        <span class="no-skewed ml-2 text-small">{{ prog.percent|round(0) }}%</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
