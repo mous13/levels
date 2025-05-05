@@ -1,0 +1,6 @@
+flysystem:
+    storages:
+        banner.storage:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/public%levels.banner.storage.path%'

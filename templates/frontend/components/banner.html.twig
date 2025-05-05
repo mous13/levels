@@ -1,0 +1,14 @@
+{% if plugin_version('citadel/levels', 'premium') and levelConfig() %}
+    {% set lvl = level(user) %}
+    {% set prog = levelProgress(user) %}
+    {% if lvl %}
+        <img
+                src="{{ lvl.image }}"
+                {% if prog.nextLevel %}
+                    title="Next rank is {{ prog.nextLevel.name }} at {{ prog.max }}xp"
+                {% else %}
+                    title="Max Level"
+                {% endif %}
+        >
+    {% endif %}
+{% endif %}

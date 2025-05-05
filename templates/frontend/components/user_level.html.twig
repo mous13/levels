@@ -7,42 +7,42 @@
             <div class="mt-2 mb-2">
                 {% set prog = levelProgress(user) %}
                 {% set lvl = level(user) %}
-                {% if levelConfig() != null %}
-                    <div title="{{ prog.percent|round(0) }}%">
-                        <p class="text-small">
-                            <span class="">
-                                {% if lvl %}
-                                    {{ lvl.name }}
-                                {% endif %}
+                <div title="{{ prog.percent|round(0) }}%">
+                    <p class="text-small">
+                            {% if lvl %}
+                                {{ lvl.name }}
+                            {% endif %}
+                    </p>
+                    <div class="xp-bar w-50">
+                        <div class="xp-bar_fill"
+                             style="width: {{ prog.percent|round(0) }}%;"
+                             aria-valuenow="{{ prog.current }}"
+                             aria-valuemin="{{ prog.min }}"
+                             aria-valuemax="{{ prog.max }}">
+                            <span class="no-skewed ml-2 text-small">
+                                {{ prog.percent|round(0) }}%
                             </span>
-                        </p>
-                        <div class="xp-bar w-50">
-                            <div class="xp-bar_fill"
-                                 style="width: {{ prog.percent|round(0) }}%;"
-                                 aria-valuenow="{{ prog.current }}"
-                                 aria-valuemin="{{ prog.min }}"
-                                 aria-valuemax="{{ prog.max }}">
-                                <span class="no-skewed ml-2 text-small">
-                                    {{ prog.percent|round(0) }}%
-                                </span>
-                            </div>
                         </div>
                     </div>
-                    <div class="mt-2">
-                        {% if prog.nextLevel %}
-                            <p class="text-small">
-                                Next Level:
-                                <span class="metric ">
-                                    {{ prog.nextLevel.name }}
-                                </span>
-                                at {{ prog.max }} XP
-                            </p>
-                        {% endif %}
-                        <span class="text-small">
-                            Total XP: {{ (prog.current) }}
-                        </span>
-                    </div>
-                {% endif %}
+                </div>
+                <div class="mt-2">
+                    {% if prog.nextLevel %}
+                        <p class="text-small">
+                            Next Level:
+                            <span class="metric ">
+                                {{ prog.nextLevel.name }}
+                            </span>
+                            at {{ prog.max }} XP
+                        </p>
+                    {% else %}
+                        <p class="text-small">
+                            {{ user.username }} has hit the max level.
+                        </p>
+                    {% endif %}
+                    <span class="text-small">
+                        Total XP: {{ (prog.current) }}
+                    </span>
+                </div>
             </div>
         </div>
     </div>

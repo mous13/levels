@@ -1,0 +1,34 @@
+{% if plugin_version('citadel/levels', 'premium') and levelConfig() %}
+    <div class="mt-2 mb-2 w-100">
+        {% set prog = levelProgress(user) %}
+        {% set lvl = level(user) %}
+        {% set progNextLevel = prog.nextLevel ? (prog.percent|round(0)) ~ "%" : "100%" %}
+
+        <div
+                {% if prog.nextLevel %}
+                    title="Next rank is {{ prog.nextLevel.name }} at {{ prog.max }}xp"
+                {% else %}
+                    title="Has hit Max Level"
+                {% endif %}
+        >
+            <p class="text-small">
+                <span class="">
+                    {% if lvl %}
+                        {{ lvl.name }}
+                    {% endif %}
+                </span>
+            </p>
+            <div class="xp-bar w-100">
+                <div class="xp-bar_fill"
+                     style="width: {{ progNextLevel }};"
+                     aria-valuenow="{{ prog.current }}"
+                     aria-valuemin="{{ prog.min }}"
+                     aria-valuemax="{{ prog.max }}">
+                    <span class="no-skewed ml-2 text-small">
+                        {{ progNextLevel }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

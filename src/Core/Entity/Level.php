@@ -18,6 +18,9 @@ class Level
     #[ORM\Column(type: 'integer')]
     private int $xpThreshold;
 
+    #[ORM\Column(nullable: true)]
+    private ?string $image = null;
+
     public function getName(): string
     {
         return $this->name;
@@ -36,5 +39,15 @@ class Level
     public function setXpThreshold(int $xpThreshold): void
     {
         $this->xpThreshold = $xpThreshold;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
     }
 }

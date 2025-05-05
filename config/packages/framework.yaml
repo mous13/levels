@@ -1,0 +1,5 @@
+framework:
+    assets:
+        packages:
+            levels.banner:
+                base_path: '%levels.banner.storage.path%'

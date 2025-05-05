@@ -1,0 +1,7 @@
+{% extends '@!Forumify/frontend/components/profile_header.html.twig' %}
+{% block profile_user_roles %}
+    {{ parent() }}
+    {% if setting('levels.display_banner') == "banner" %}
+        {% include '@CitadelLevels/frontend/components/banner.html.twig' with { user: user } only %}
+    {% endif %}
+{% endblock %}

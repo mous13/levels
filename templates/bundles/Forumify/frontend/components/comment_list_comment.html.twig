@@ -1,5 +1,11 @@
 {% extends '@!Forumify/frontend/components/comment_list_comment.html.twig' %}
 {% block comment_list_comment_author_badges %}
     {{ parent() }}
-    {% include '@CitadelLevels/frontend/components/comment_user_level.html.twig' with { user: item.createdBy } only %}
+    <div class="mt-2 w-50">
+        {% if setting('levels.display_banner') == "banner" %}
+            {% include '@CitadelLevels/frontend/components/banner.html.twig' with { user: item.createdBy } only %}
+        {% else %}
+            {% include '@CitadelLevels/frontend/components/xp_bar.html.twig' with { user: item.createdBy } only %}
+        {% endif %}
+    </div>
 {% endblock %}
