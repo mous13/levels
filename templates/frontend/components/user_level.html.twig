@@ -11,7 +11,9 @@
                     <div title="{{ prog.percent|round(0) }}%">
                         <p class="text-small">
                             <span class="">
-                                {{ lvl.name }}
+                                {% if lvl %}
+                                    {{ lvl.name }}
+                                {% endif %}
                             </span>
                         </p>
                         <div class="xp-bar w-50">
