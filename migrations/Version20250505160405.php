@@ -16,15 +16,19 @@ final class Version20250505160405 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql(<<<'SQL'
+        $this->addSql(
+            <<<'SQL'
             ALTER TABLE levels ADD image VARCHAR(255) DEFAULT NULL
-        SQL);
+        SQL
+        );
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql(<<<'SQL'
+        $this->addSql(
+            <<<'SQL'
             ALTER TABLE levels DROP image
-        SQL);
+        SQL
+        );
     }
 }

@@ -14,7 +14,8 @@ class ForumifyXpSubscriber implements EventSubscriberInterface
     public function __construct(
         private readonly XpService $xpService,
         private readonly SettingRepository $settingRepository,
-    ){}
+    ) {
+    }
 
     public static function getSubscribedEvents(): array
     {

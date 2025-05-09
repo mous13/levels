@@ -16,12 +16,15 @@ class LevelType extends AbstractType
 {
     public function __construct(
         private readonly Packages $packages
-    ){}
+    ) {
+    }
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Level::class,
-        ]);
+            ]
+        );
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -29,11 +32,16 @@ class LevelType extends AbstractType
         $imagePreview = empty($options['data']) ? null : $options['data']->getImage();
 
         $builder
-            ->add('name', TextType::class, [
-            ])
-            ->add('xpThreshold', IntegerType::class, [
-            ])
-            ->add('image', FileType::class, [
+            ->add(
+                'name', TextType::class, [
+                ]
+            )
+            ->add(
+                'xpThreshold', IntegerType::class, [
+                ]
+            )
+            ->add(
+                'image', FileType::class, [
                 'mapped' => false,
                 'label' => 'Banner',
                 'help' => 'Recommended size is 134x30.',
@@ -47,6 +55,7 @@ class LevelType extends AbstractType
                         maxSize: '10M',
                     ),
                 ],
-            ]);
+                ]
+            );
     }
 }

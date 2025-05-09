@@ -16,7 +16,8 @@ class LevelExtension extends AbstractExtension
         private readonly LevelRepository $levels,
         private readonly UserXpRepository $userXpRepository,
         private readonly SettingRepository $settingRepository,
-    ){}
+    ) {
+    }
 
     public function getFunctions()
     {

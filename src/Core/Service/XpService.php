@@ -13,7 +13,8 @@ class XpService
     public function __construct(
         private readonly UserXpRepository $repository,
         private readonly PluginVersionChecker $pluginVersionChecker,
-    ){}
+    ) {
+    }
 
     public function addXp(User $user, int $amount): void
     {
