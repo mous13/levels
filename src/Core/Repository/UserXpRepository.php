@@ -8,7 +8,6 @@ use Forumify\Core\Repository\AbstractRepository;
 
 class UserXpRepository extends AbstractRepository
 {
-
     public static function getEntityClass(): string
     {
         return UserXp::class;

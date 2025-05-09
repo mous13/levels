@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MenuBuilder implements AdminMenuBuilderInterface
 {
-
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly PluginVersionChecker $pluginVersionChecker,
@@ -24,7 +23,9 @@ class MenuBuilder implements AdminMenuBuilderInterface
             $url = $this->urlGenerator->generate(...);
 
             $levelsMenu = new Menu(
-                'Levels', ['icon' => 'ph ph-arrow-fat-up', 'permission' => 'levels.admin.levels.view'], [
+                'Levels',
+                ['icon' => 'ph ph-arrow-fat-up', 'permission' => 'levels.admin.levels.view'],
+                [
                 new MenuItem('Levels', $url('levels_admin_levels_list'), ['icon' => 'ph ph-arrow-fat-up', 'permission' => 'levels.admin.levels.view']),
                 new MenuItem('Settings', $url('levels_admin_levels_settings'), ['icon' => 'ph ph-gear', 'permission' => 'levels.admin.levels.view']),
                 ]

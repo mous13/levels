@@ -13,19 +13,25 @@ class SettingsType extends AbstractType
     {
         $builder
             ->add(
-                'levels__thread_post_xp', IntegerType::class, [
+                'levels__thread_post_xp',
+                IntegerType::class,
+                [
                 'label' => 'Thread Post XP',
                 'help' => 'How much XP per thread post?'
                 ]
             )
             ->add(
-                'levels__comment_post_xp', IntegerType::class, [
+                'levels__comment_post_xp',
+                IntegerType::class,
+                [
                 'label' => 'Comment XP',
                 'help' => 'How much XP per comment?'
                 ]
             )
             ->add(
-                'levels__display_banner', ChoiceType::class, [
+                'levels__display_banner',
+                ChoiceType::class,
+                [
                 'choices' => [
                   'Banner' => 'banner',
                   'Xp' => 'xp'

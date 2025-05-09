@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Citadel\Levels;
 
-
 use Forumify\Plugin\AbstractForumifyPlugin;
 use Forumify\Plugin\PluginMetadata;
-
 
 class CitadelLevels extends AbstractForumifyPlugin
 {

@@ -9,7 +9,6 @@ use Forumify\Plugin\Service\PluginVersionChecker;
 
 class XpService
 {
-
     public function __construct(
         private readonly UserXpRepository $repository,
         private readonly PluginVersionChecker $pluginVersionChecker,
@@ -19,10 +18,10 @@ class XpService
     public function addXp(User $user, int $amount): void
     {
         $hasLicense = $this->pluginVersionChecker->isVersionInstalled('citadel/levels', 'premium');
-        if($hasLicense) {
+        if ($hasLicense) {
             $userXp = $this->repository->findOneBy(['user' => $user]);
 
-            if(!$userXp) {
+            if (!$userXp) {
                 $userXp = new UserXp();
                 $userXp->setUser($user);
             }
@@ -31,5 +30,4 @@ class XpService
             $this->repository->save($userXp);
         }
     }
-
 }

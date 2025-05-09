@@ -10,7 +10,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ForumifyXpSubscriber implements EventSubscriberInterface
 {
-
     public function __construct(
         private readonly XpService $xpService,
         private readonly SettingRepository $settingRepository,
@@ -36,5 +35,4 @@ class ForumifyXpSubscriber implements EventSubscriberInterface
         $comment = $event->getComment();
         $this->xpService->addXp($comment->getCreatedBy(), (int)$this->settingRepository->get('levels.comment_post_xp'));
     }
-
 }

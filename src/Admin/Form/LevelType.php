@@ -33,15 +33,21 @@ class LevelType extends AbstractType
 
         $builder
             ->add(
-                'name', TextType::class, [
+                'name',
+                TextType::class,
+                [
                 ]
             )
             ->add(
-                'xpThreshold', IntegerType::class, [
+                'xpThreshold',
+                IntegerType::class,
+                [
                 ]
             )
             ->add(
-                'image', FileType::class, [
+                'image',
+                FileType::class,
+                [
                 'mapped' => false,
                 'label' => 'Banner',
                 'help' => 'Recommended size is 134x30.',

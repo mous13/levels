@@ -21,7 +21,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[PluginVersion('citadel/levels', 'premium')]
 class LevelController extends AbstractController
 {
-
     public function __construct(
         private readonly LevelRepository $levelRepository,
         private readonly SettingRepository $settingRepository,
@@ -34,7 +33,8 @@ class LevelController extends AbstractController
     public function list(): Response
     {
         return $this->render(
-            '@CitadelLevels/admin/levels/list.html.twig', [
+            '@CitadelLevels/admin/levels/list.html.twig',
+            [
             'levels' => $this->levelRepository->findAll()
             ]
         );
@@ -54,13 +54,13 @@ class LevelController extends AbstractController
 
     public function handleLevelForm(Request $request, ?int $id = null, ?Level $level = null): Response
     {
-        if($id != null) {
+        if ($id != null) {
             $level = $this->levelRepository->find($id);
         }
 
         $form = $this->createForm(LevelType::class, $level);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $level = $form->getData();
 
             $banner = $form->get('image')->getData();
@@ -76,7 +76,8 @@ class LevelController extends AbstractController
         }
 
         return $this->render(
-            '@CitadelLevels/admin/levels/form.html.twig', [
+            '@CitadelLevels/admin/levels/form.html.twig',
+            [
             'form' => $form->createView(),
             'level' => $level
             ]
@@ -89,7 +90,8 @@ class LevelController extends AbstractController
         $level = $this->levelRepository->find($id);
         if (!$request->get('confirmed')) {
             return  $this->render(
-                '@CitadelLevels/admin/levels/delete.html.twig', [
+                '@CitadelLevels/admin/levels/delete.html.twig',
+                [
                 'level' => $level,
                 ]
             );
@@ -116,7 +118,8 @@ class LevelController extends AbstractController
         }
 
         return $this->render(
-            '@CitadelLevels/admin/levels/settings.html.twig', [
+            '@CitadelLevels/admin/levels/settings.html.twig',
+            [
             'form' => $form->createView(),
             ]
         );
