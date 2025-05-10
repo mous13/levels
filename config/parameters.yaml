@@ -1,2 +1,2 @@
 parameters:
-  levels.banner.storage.path: '/levels/storage/banners'
+  levels.banner.storage.path: '/storage/levels/banners'
