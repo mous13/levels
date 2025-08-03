@@ -1,4 +1,4 @@
-{% extends '@!Forumify/frontend/profile.html.twig' %}
+{% extends '@!Forumify/frontend/profile/profile.html.twig' %}
 {% block profile_badges %}
     {{ parent() }}
     {% include '@CitadelLevels/frontend/components/user_level.html.twig' with { user: user } only %}

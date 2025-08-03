@@ -27,7 +27,7 @@ class MenuBuilder implements AdminMenuBuilderInterface
                 ['icon' => 'ph ph-arrow-fat-up', 'permission' => 'levels.admin.levels.view'],
                 [
                 new MenuItem('Levels', $url('levels_admin_levels_list'), ['icon' => 'ph ph-arrow-fat-up', 'permission' => 'levels.admin.levels.view']),
-                new MenuItem('Settings', $url('levels_admin_levels_settings'), ['icon' => 'ph ph-gear', 'permission' => 'levels.admin.levels.view']),
+                new MenuItem('Settings', $url('levels_admin_settings'), ['icon' => 'ph ph-gear', 'permission' => 'levels.admin.levels.view']),
                 ]
             );
 

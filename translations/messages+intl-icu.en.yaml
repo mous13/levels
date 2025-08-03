@@ -4,3 +4,7 @@ levels:
   user_no_level: '{xp} XP earned so far'
   admin:
     delete: 'Warning: You are about to delete {level}'
+    level:
+      crud:
+        single: 'Level'
+        plural: 'Levels'

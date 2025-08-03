@@ -23,31 +23,19 @@ class LevelType extends AbstractType
         $resolver->setDefaults(
             [
             'data_class' => Level::class,
+            'image_required' => false,
             ]
         );
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $imagePreview = empty($options['data']) ? null : $options['data']->getImage();
 
         $builder
-            ->add(
-                'name',
-                TextType::class,
-                [
-                ]
-            )
-            ->add(
-                'xpThreshold',
-                IntegerType::class,
-                [
-                ]
-            )
-            ->add(
-                'image',
-                FileType::class,
-                [
+            ->add('name', TextType::class)
+            ->add('xpThreshold', IntegerType::class)
+            ->add('newImage', FileType::class, [
                 'mapped' => false,
                 'label' => 'Banner',
                 'help' => 'Recommended size is 134x30.',
@@ -57,11 +45,13 @@ class LevelType extends AbstractType
                         : null,
                 ],
                 'constraints' => [
+                    ...($options['image_required'] ? [
+                        new Assert\NotBlank(allowNull: false),
+                    ]: []),
                     new Assert\Image(
-                        maxSize: '10M',
+                        maxSize: '1M',
                     ),
-                ],
                 ]
-            );
+            ]);
     }
 }
